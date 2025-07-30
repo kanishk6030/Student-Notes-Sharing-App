@@ -5,6 +5,8 @@ const authRoutes = require("../backend/router/authRoute")
 const userRoute = require("../backend/router/userRoute")
 const noteRoute = require("../backend/router/noteRoute")
 // MongoDb connection
+
+const localUrl = "mongodb://127.0.0.1:27017/notes-sharing"
 main()
   .then(() => {
     console.log("Connected Successfully");
@@ -13,7 +15,7 @@ main()
     console.log(err);
   });
 async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/notes-sharing");
+  await mongoose.connect(process.env.ATLAS_URL);
 }
 
 const app = express();

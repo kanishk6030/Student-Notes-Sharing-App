@@ -19,7 +19,7 @@ module.exports.getAllNotes = async(req,res)=>{
         const allNotes = await Note.find();
         res.status(201).json({ success: true, allNotes });
     } catch (error) {
-        res.status(500).json({ success: false, message: err.message });
+        res.status(500).json({ success: false, message: error.message });
     }
 }
 
