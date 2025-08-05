@@ -1,10 +1,16 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require('cors');
 const authRoutes = require("../backend/router/authRoute")
 const userRoute = require("../backend/router/userRoute")
 const noteRoute = require("../backend/router/noteRoute")
 // MongoDb connection
+
+app.use(cors({
+  origin: 'http://localhost:5173', // or '*' for all origins, but specific is safer
+  credentials: true // only if you use cookies/auth headers
+}));
 
 const localUrl = "mongodb://127.0.0.1:27017/notes-sharing"
 main()
