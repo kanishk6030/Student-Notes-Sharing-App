@@ -6,6 +6,7 @@ const authRoutes = require("../backend/router/authRoute")
 const userRoute = require("../backend/router/userRoute")
 const noteRoute = require("../backend/router/noteRoute")
 // MongoDb connection
+const app = express();
 
 app.use(cors({
   origin: 'http://localhost:5173', // or '*' for all origins, but specific is safer
@@ -24,7 +25,6 @@ async function main() {
   await mongoose.connect(process.env.ATLAS_URL);
 }
 
-const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 
