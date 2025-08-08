@@ -9,7 +9,7 @@ const noteRoute = require("../backend/router/noteRoute")
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:5173', // or '*' for all origins, but specific is safer
+  origin: '*', // or '*' for all origins, but specific is safer
   credentials: true // only if you use cookies/auth headers
 }));
 
@@ -25,8 +25,8 @@ async function main() {
   await mongoose.connect(process.env.ATLAS_URL);
 }
 
-app.use(express.json());
-app.use(express.urlencoded({extended:true}))
+app.use(express.json({limit: "10mb"}));
+app.use(express.urlencoded({limit: "10mb",extended:true}))
 
 
 app.get("/",(req,res)=>{
