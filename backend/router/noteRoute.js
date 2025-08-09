@@ -20,7 +20,7 @@ const router = express();
 router.get("/notes",getAllNotes);
 router.get("/notes/search/note",getOneNote);
 router.get("/notes/search/user",getNotesByUser);
-router.post("/notes/upload",jwtAuth,upload.single("file"),notesValidation,validate,uploadNote)
+router.post("/notes/upload",jwtAuth,upload.single("fileUrl"),notesValidation,validate,uploadNote)
 
 router.post("/notes/:noteId/like", jwtAuth, toggleLike);
 router.get("/notes/:noteId/like-status",getLikeStatus);
