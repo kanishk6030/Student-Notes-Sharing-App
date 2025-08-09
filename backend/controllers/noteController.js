@@ -5,7 +5,7 @@ const Note = require("../models/notes");
 module.exports.uploadNote = async(req, res) => {
 try {
     const note = await Note.create({ 
-      fileUrl:req.file.path || req.file.secure_url,
+      file:req.file.path || req.file.secure_url,
       uploadedBy:req.user.userId,
       ...req.body });
       console.log(req.file)
