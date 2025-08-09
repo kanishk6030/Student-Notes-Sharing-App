@@ -9,7 +9,7 @@ try {
       uploadedBy:req.user.userId,
       ...req.body });
       console.log(req.file)
-    res.status(201).json({ success: true, note:note });
+    return res.status(201).json({ success: true, note:note });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });
   }
@@ -18,7 +18,7 @@ try {
 module.exports.getAllNotes = async(req,res)=>{
     try {
         const allNotes = await Note.find();
-        res.status(201).json({ success: true, allNotes });
+        return res.status(201).json({ success: true, allNotes });
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });
     }
@@ -30,7 +30,7 @@ module.exports.getOneNote = async(req,res)=>{
         console.log(noteId)
         if(!noteId) return res.status(500).json({ success: false, message: "noteId is inavalid" });
         const note = await Note.findById(noteId);
-        res.status(201).json({ success: true, note})
+        return res.status(201).json({ success: true, note})
     } catch (error) {
         res.status(500).json({ success: false, message: err.message });
     }
@@ -42,7 +42,7 @@ module.exports.getNotesByUser = async(req,res)=>{
 
     const notes = await Note.find({ uploadedBy: userId });
 
-    res.status(200).json({ success: true, notes });
+    return res.status(200).json({ success: true, notes });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });
   }
