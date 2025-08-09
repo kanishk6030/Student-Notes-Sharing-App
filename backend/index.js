@@ -25,12 +25,10 @@ async function main() {
   await mongoose.connect(process.env.ATLAS_URL);
 }
 
-app.use(express.json({limit: "10mb"}));
-app.use(express.urlencoded({limit: "10mb",extended:true}))
 
 
 app.get("/",(req,res)=>{
-    res.send("Hello");
+  res.send("Hello");
 })
 
 // LOGIN & SIGNUP ROUTES
@@ -40,6 +38,8 @@ app.use("/api",userRoute);
 // Notes sharing uploading & destroying
 app.use("/api",noteRoute);
 
+app.use(express.json({limit: "10mb"}));
+app.use(express.urlencoded({limit: "10mb",extended:true}))
 
 const PORT = process.env.PORT;
 app.listen(PORT,()=>{
