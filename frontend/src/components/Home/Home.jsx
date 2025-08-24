@@ -1,0 +1,83 @@
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useNotes } from "../../contexts/useNotes";
+
+function Home() {
+  const { getAllNotes } = useNotes();
+
+  return (
+    <div className="relative w-full">
+      {/* Hero section */}
+      <div className="relative z-10 flex flex-row items-center w-full h-screen p-5 justify-end">
+        {/* Left Side */}
+        <div className="wrapper-1 w-1/2 h-screen flex flex-col justify-center items-center"
+        style={{marginLeft: "80px"
+        }}>
+          <div className=" w-full">
+            {/* Border + Content */}
+            <div className="flex flex-col items-start gap-2 ">
+              <h1 className="text-7xl md:text-8xl font-bold">Connect.</h1>
+              <h1 className="text-7xl md:text-8xl font-bold">Share.</h1>
+              <h1 className="text-7xl md:text-8xl font-bold">Learn.</h1>
+
+              {/* Paragraph inside border */}
+              <p className="!mt-6 !ml-1 max-w-xl text-left">
+                ZapNotes is a fast and easy note-sharing platform where students
+                can access, share, and learn from class notes instantly. A
+                smarter way to collaborate and study together.
+              </p>
+
+              {/* Button inside border for consistent alignment */}
+            </div>
+          </div>
+        </div>
+        <div className="wrapper-2 w-1/2 h-screen flex justify-center items-center">
+          <div className="backdrop-blur-md rounded-lg shadow-lg shadow-gray-400 bg-white/30">
+          <img className="h-100" src="../hero.png" alt="hero" />
+          </div>
+        </div>
+
+        <div className="fixed top-0 left-0 transform translate-x-[43%] translate-y-[85%] w-full h-screen">
+          <Link to="/explore">
+                <button className="group !mt-6 !px-6 !py-3 border-b-2  border-[#4d4b4b] !text-black rounded-lg hover:bg-[#4d4b4b] hover:!text-white transition duration-300 h-15 w-80 font-light text-2xl shadow-md shadow-[#4d4b4b] outline-none backdrop-blur-md"
+                >
+                  Explore Notes <i class="ri-arrow-right-line !text-black group-hover:!text-white transition duration-300"></i>
+                </button>
+              </Link>
+        </div>
+      </div>
+
+      {/* Page 2 */}
+      {/* <div className="relative z-10 flex flex-col items-center justify-center w-full h-screen text-center">
+        <h1 className="text-5xl md:text-6xl font-bold text-white">
+          College Notes
+        </h1>
+        <p className="mt-4 text-white text-lg max-w-xl">
+          Access and share notes with your college peers.
+        </p>
+        <Link to="/explore">
+          <button className="mt-6 px-6 py-3 bg-[#687FE5] text-white rounded-lg hover:bg-[#5563c1] transition duration-300">
+            Explore Notes
+          </button>
+        </Link>
+      </div> */}
+
+      {/* Page 3 */}
+      {/* <div className="relative z-10 flex flex-col items-center justify-center w-full h-screen text-center">
+        <h1 className="text-5xl md:text-6xl font-bold text-white">
+          College Notes
+        </h1>
+        <p className="mt-4 text-white text-lg max-w-xl">
+          Access and share notes with your college peers.
+        </p>
+        <Link to="/explore">
+          <button className="mt-6 px-6 py-3 bg-[#687FE5] text-white rounded-lg hover:bg-[#5563c1] transition duration-300">
+            Explore Notes
+          </button>
+        </Link>
+      </div> */}
+    </div>
+  );
+}
+
+export default Home;
