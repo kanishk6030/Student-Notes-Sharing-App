@@ -23,6 +23,7 @@ function Layout() {
       <div>
         <Header />
         <Outlet/>
+        <div className="h-40" />
         <Footer />  
       </div>
 

@@ -3,7 +3,6 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Layout from "./layouts/Layout";
 import Home from "./components/Home/Home";
-import About from "./components/About/About";
 import Explore from "./components/Explore/Explore";
 import Students from "./components/Students/Students";
 
@@ -16,7 +15,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Register />} />
-        <Route path="about" element={<About />} />
         <Route path="explore" element={<Explore />} />
         <Route path="students" element={<Students />} />
         {/* Add more protected/nested routes here */}

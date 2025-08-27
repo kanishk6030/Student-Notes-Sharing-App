@@ -58,9 +58,9 @@ function Header() {
             </Link>
             </li>
             <li>
-          <Link to="/about" className="hover:text-gray-200 nav-link">
+          <a href="#about" className="hover:text-gray-200 nav-link">
             About
-          </Link>
+          </a>
             </li>
             <li>
           <Link to="/students" className="hover:text-gray-200 nav-link">

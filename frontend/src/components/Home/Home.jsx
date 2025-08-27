@@ -1,12 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState   } from "react";
 import { Link } from "react-router-dom";
 import { useNotes } from "../../contexts/useNotes";
+import Cards from "../Cards/Cards";
+import Footer from "../Footer/Footer";
+import ExploreButton from "../ExploreBtn";
+import ExploreBtn from "../ExploreBtn";
 
 function Home() {
-  const { getAllNotes } = useNotes();
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full flex justify-center items-center flex-col">
       {/* Hero section */}
       <div className="relative z-10 flex flex-row items-center w-full h-screen p-5 justify-end">
         {/* Left Side */}
@@ -26,6 +29,7 @@ function Home() {
                 can access, share, and learn from class notes instantly. A
                 smarter way to collaborate and study together.
               </p>
+          <ExploreBtn />
 
               {/* Button inside border for consistent alignment */}
             </div>
@@ -36,31 +40,31 @@ function Home() {
           <img className="h-100" src="../hero.png" alt="hero" />
           </div>
         </div>
-
-        <div className="fixed top-0 left-0 transform translate-x-[43%] translate-y-[85%] w-full h-screen">
-          <Link to="/explore">
-                <button className="group !mt-6 !px-6 !py-3 border-b-2  border-[#4d4b4b] !text-black rounded-lg hover:bg-[#4d4b4b] hover:!text-white transition duration-300 h-15 w-80 font-light text-2xl shadow-md shadow-[#4d4b4b] outline-none backdrop-blur-md"
-                >
-                  Explore Notes <i class="ri-arrow-right-line !text-black group-hover:!text-white transition duration-300"></i>
-                </button>
-              </Link>
-        </div>
       </div>
 
       {/* Page 2 */}
-      {/* <div className="relative z-10 flex flex-col items-center justify-center w-full h-screen text-center">
-        <h1 className="text-5xl md:text-6xl font-bold text-white">
-          College Notes
-        </h1>
-        <p className="mt-4 text-white text-lg max-w-xl">
-          Access and share notes with your college peers.
-        </p>
-        <Link to="/explore">
-          <button className="mt-6 px-6 py-3 bg-[#687FE5] text-white rounded-lg hover:bg-[#5563c1] transition duration-300">
-            Explore Notes
-          </button>
-        </Link>
-      </div> */}
+      <div className="relative z-20 flex w-[90%] text-center rounded-2xl !mb-20 gap-10 !mt-20 flex-wrap flex-row justify-around items-center" id="about">
+        <Cards
+          src="../../../public/easy.png"
+          title="Easy Access to Notes"
+          desc="Students can quickly find and access semester-wise notes in one place without wasting time searching across different sources."
+        />
+        <Cards
+          src="/easy.png"
+          title="Easy Access to Notes"
+          desc="Students can quickly find and access semester-wise notes in one place without wasting time searching across different sources."
+        />
+        <Cards
+          src="/easy.png"
+          title="Easy Access to Notes"
+          desc="Students can quickly find and access semester-wise notes in one place without wasting time searching across different sources."
+        />
+        <Cards
+          src="/easy.png"
+          title="Easy Access to Notes"
+          desc="Students can quickly find and access semester-wise notes in one place without wasting time searching across different sources."
+        />
+      </div>
 
       {/* Page 3 */}
       {/* <div className="relative z-10 flex flex-col items-center justify-center w-full h-screen text-center">
@@ -76,7 +80,19 @@ function Home() {
           </button>
         </Link>
       </div> */}
+
+      {/* Explore Button */}
+        {/* <div className={`fixed top-0 left-0 transform translate-x-[40%] translate-y-[80%] w-full h-screen z-1000 ${
+        isFooterVisible ? "relative bottom-0" : "fixed bottom-10"}`}>
+          <Link to="/explore">
+                <button className="group !mt-6 !px-6 !py-3 border-b-2  border-[#4d4b4b] !text-black rounded-lg hover:bg-[#4d4b4b] hover:!text-white transition duration-300 h-15 w-80 font-light text-2xl shadow-md shadow-[#4d4b4b] outline-none backdrop-blur-md"
+                >
+                  Explore Notes <i className="ri-arrow-right-line !text-black group-hover:!text-white transition duration-300"></i>
+                </button>
+              </Link>
+        </div> */}
     </div>
+
   );
 }
 
