@@ -28,12 +28,12 @@ function Login() {
   };
 
   return (
-    <div className="bg-gray-100 flex items-center justify-center min-h-screen font-sans">
+    <div className="relative z-20 bg-gray-100 flex items-center justify-center !min-h-screen !pt-50 !pb-50 font-sans">
             {/* Main Card Container */}
-            <div className="bg-white p-8 rounded-2xl shadow-xl w-100 max-w-md">
+            <div className="bg-white !p-8 rounded-2xl shadow-xl w-100 max-w-md">
                 
                 {/* Form Header */}
-                <div className="text-center mb-6">
+                <div className="text-center !mb-6">
                     <h1 className="text-3xl font-bold text-gray-800">Login to your Account</h1>
                 </div>
 
@@ -42,7 +42,7 @@ function Login() {
                     
                     {/* Email Input Field */}
                     <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-3">Email</label>
                         <input 
                             type="email" 
                             id="email" 
@@ -50,14 +50,14 @@ function Login() {
                             value={form.email}
                             onChange={handleChange}
                             placeholder="you@example.com"
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                            className="w-full !px-4 !py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
                             required
                         />
                     </div>
                     
                     {/* Password Input Field */}
                     <div>
-                        <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                        <label htmlFor="password" className="block text-sm font-medium text-gray-700 !mt-3">Password</label>
                         <input 
                             type="password" 
                             id="password" 
@@ -65,13 +65,13 @@ function Login() {
                             value={form.password}
                             onChange={handleChange}
                             placeholder="Must be at least 8 characters"
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                            className="w-full !px-4 !py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
                             required
                             />
                     </div>
                             {error && (
                               <div
-                                className="mb-4 text-center font-semibold"
+                                className="!mb-4 text-center font-semibold"
                                 style={{ color: "#EBD6FB" }}
                               >
                                 {error}
@@ -82,7 +82,7 @@ function Login() {
                     <div>
                         <button 
                             type="submit" 
-                            className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-200"
+                            className="w-full bg-blue-600 !text-white !py-3 rounded-lg font-semibold shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-200 !mt-5"
                         >
                             Login
                         </button>
@@ -90,7 +90,7 @@ function Login() {
                 </form>
 
                 {/* "Already have an account?" link */}
-                <div className="mt-6 text-center">
+                <div className="!mt-6 text-center">
                     <p className="text-sm text-gray-500">
                         Don't have an account? 
                         <Link to="/register" className="font-medium text-blue-600 hover:text-blue-700 hover:underline transition duration-200">Register here</Link>

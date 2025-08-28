@@ -79,26 +79,26 @@ function Header() {
           </button>
 
           {dropdownOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-white rounded shadow-lg py-2 text-black z-50">
+            <div className="absolute right-0 !mt-2 w-48 bg-white rounded-xl shadow-lg !p-2 text-black z-50 ">
               {isLoggedIn ? (
                 <>
                   <Link
                     to="/profile"
-                    className="block px-4 py-2 hover:bg-gray-100"
+                    className="block!px-4 !py-2 hover:bg-gray-100 rounded-xl"
                     onClick={() => setDropdownOpen(false)}
                   >
                     My Profile
                   </Link>
                   <Link
                     to="/mynotes"
-                    className="block px-4 py-2 hover:bg-gray-100"
+                    className="block !px-4 !py-2 hover:bg-gray-100 rounded-xl"
                     onClick={() => setDropdownOpen(false)}
                   >
                     My Notes
                   </Link>
                   <Link
                     to="/"
-                    className="block px-4 py-2 hover:bg-gray-100"
+                    className="block !px-4 !py-2 hover:bg-gray-100 rounded-xl"
                     onClick={() => {setDropdownOpen(false)
                       handleLogout()
                     }
@@ -111,14 +111,14 @@ function Header() {
                 <>
                   <Link
                     to="/login"
-                    className="block px-4 py-2 hover:bg-gray-100"
+                    className="block !px-4 !py-2 hover:bg-gray-100 rounded-xl"
                     onClick={() => setDropdownOpen(false)}
                   >
                     Login
                   </Link>
                   <Link
                     to="/signup"
-                    className="block px-4 py-2 hover:bg-gray-100"
+                    className="block !px-4 !py-2 hover:bg-gray-100 rounded-xl"
                     onClick={() => setDropdownOpen(false)}
                   >
                     Register
