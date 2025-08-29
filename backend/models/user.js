@@ -22,12 +22,15 @@ const userSchema = new Schema({
         default: 'user'
     },
     department:{
+        default: "General",
         type:String,
     },
     university:{
         type:String,
+        default: "Unknown"  
     },
     semester:{
+        default: 1,
         type:Number,
         min:1,
         max:8,
