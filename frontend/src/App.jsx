@@ -5,6 +5,7 @@ import Layout from "./layouts/Layout";
 import Home from "./components/Home/Home";
 import Explore from "./components/Explore/Explore";
 import Students from "./components/Students/Students";
+import Profile from "./components/Profile/Profile";
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path="signup" element={<Register />} />
         <Route path="explore" element={<Explore />} />
         <Route path="students" element={<Students />} />
+        <Route path="profile" element={<Profile />} />
         {/* Add more protected/nested routes here */}
       </Route>
     </Routes>

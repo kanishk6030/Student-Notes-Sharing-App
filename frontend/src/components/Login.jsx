@@ -93,7 +93,7 @@ function Login() {
                 <div className="!mt-6 text-center">
                     <p className="text-sm text-gray-500">
                         Don't have an account? 
-                        <Link to="/register" className="font-medium text-blue-600 hover:text-blue-700 hover:underline transition duration-200">Register here</Link>
+                        <Link to="/signup" className="font-medium text-blue-600 hover:text-blue-700 hover:underline transition duration-200">Register here</Link>
                     </p>
                 </div>
             </div>
