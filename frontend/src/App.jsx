@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
-import Login from "./components/Login";
-import Register from "./components/Register";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 import Layout from "./layouts/Layout";
-import Home from "./components/Home/Home";
-import Explore from "./components/Explore/Explore";
-import Students from "./components/Students/Students";
-import Profile from "./components/Profile/Profile";
+import Home from "./pages/Home/Home";
+import Explore from "./pages/Explore/Explore";
+import Students from "./pages/Students/Students";
+import Profile from "./pages/Profile/Profile";
 
 
 function App() {

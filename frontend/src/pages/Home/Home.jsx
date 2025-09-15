@@ -1,10 +1,6 @@
-import React, { useEffect,useState   } from "react";
-import { Link } from "react-router-dom";
-import { useNotes } from "../../contexts/useNotes";
-import Cards from "../Cards/Cards";
-import Footer from "../Footer/Footer";
-import ExploreButton from "../ExploreBtn";
-import ExploreBtn from "../ExploreBtn";
+
+import Cards from "../../components/Cards/Cards";
+import AnimatedBtn from "../../components/AnimatedBtn";
 
 function Home() {
 
@@ -29,7 +25,10 @@ function Home() {
                 can access, share, and learn from class notes instantly. A
                 smarter way to collaborate and study together.
               </p>
-          <ExploreBtn />
+          <AnimatedBtn 
+            to="/explore"
+            btntext="Explore Notes"
+          />
 
               {/* Button inside border for consistent alignment */}
             </div>

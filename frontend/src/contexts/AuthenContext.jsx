@@ -44,7 +44,7 @@ export function AuthProvider({ children }) {
       setUser(res.data);
       })
       .catch(()=>{
-        localStorage.removeItem("token")
+        localStorage.removeItem("authToken")
       })
       .finally(()=>setLoading(false))
     }else {

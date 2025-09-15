@@ -47,8 +47,8 @@ function Header() {
       >
         <div className="flex items-center">
           <Link to="/" className="uppercase text-xl font-bold flex items-center gap-2">
-          <img src="../logo.png" alt="ZapNotes Logo" className="h-6 mr-2" />
-            ZapNotes
+          <img src="../logo.png" alt="NoteNest Logo" className="h-6 mr-2" />
+            NoteNest
           </Link>
         </div>
         <ul className="flex justify-evenly gap-5 items-center">

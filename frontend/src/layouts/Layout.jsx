@@ -12,12 +12,8 @@ function Layout() {
         className="fixed inset-0 z-0"
         style={{
           backgroundImage: `
-            linear-gradient(to right, rgba(229,231,235,0.8) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(229,231,235,0.8) 1px, transparent 1px),
-            radial-gradient(circle 500px at 20% 20%, rgba(139,92,246,0.3), transparent),
-            radial-gradient(circle 500px at 80% 80%, rgba(59,130,246,0.3), transparent)
-          `,
-          backgroundSize: "48px 48px, 48px 48px, 100% 100%, 100% 100%",
+        radial-gradient(circle at 30% 70%, rgba(173, 216, 230, 0.35), transparent 60%),
+        radial-gradient(circle at 70% 30%, rgba(255, 182, 193, 0.4), transparent 60%)`
         }}
       />
       <div>

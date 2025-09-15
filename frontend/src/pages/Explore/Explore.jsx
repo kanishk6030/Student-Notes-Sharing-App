@@ -2,8 +2,8 @@
 import React, { useDebugValue, useEffect, useState } from "react";
 import { useNotes } from "../../contexts/useNotes"; // adjust path if needed
 import { Search } from "lucide-react"; // optional icon library
-import CircularIndeterminate from "../Loading/Loading"; // adjust path if needed
-import NotesCard from "../NotesCard/NotesCard"; // adjust path if needed
+import CircularIndeterminate from "../../components/Loading/Loading"; // adjust path if needed
+import NotesCard from "../../components/NotesCard/NotesCard"; // adjust path if needed
 
 function Explore() {
   const { notes, loading ,getAllNotes} = useNotes();
@@ -35,7 +35,7 @@ function Explore() {
 
       {/* Notes list */}
       {loading ? (
-        <p className="flex justify-center items-center w-full h-[200px]"><CircularIndeterminate /></p>
+        <p className="flex justify-center items-center w-full h-screen"><CircularIndeterminate /></p>
       ) : notes.length > 0 ? (
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 !mt-8">
           {notes.map((note) => (

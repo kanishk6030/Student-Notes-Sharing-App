@@ -6,6 +6,7 @@ export const NotesContext = createContext(null);
 
 export function NotesProvider({ children }) {
     const [notes,setNotes] = useState([]);
+    const [userNotes,setUserNotes] = useState([]);
     const [loading,setLoading] = useState(false);
     const navigate = useNavigate();
 
@@ -22,8 +23,21 @@ export function NotesProvider({ children }) {
     }
   }
 
+  async function getUserNotes(userId) {
+    setLoading(true);
+    try {
+      const res = await axios.get(`/notes/search/user?userId=${userId}`);
+      console.log("User Notes", res.data);
+      setUserNotes(res.data.userNotes);
+    } catch (err) {
+      console.error("Error fetching user notes:", err);
+    } finally {
+      setLoading(false);
+    }
+  }
+
     return (
-        <NotesContext.Provider value={{ notes , loading , getAllNotes }}>
+        <NotesContext.Provider value={{ notes , userNotes, loading , getAllNotes , getUserNotes }}>
           {children}
         </NotesContext.Provider>
       );

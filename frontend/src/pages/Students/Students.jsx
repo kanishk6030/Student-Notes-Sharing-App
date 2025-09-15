@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useUsers } from '../../contexts/useUsers'
-import CircularIndeterminate from '../Loading/Loading'
-import ImgMediaCard from "../UserCards/UserCards"
+import CircularIndeterminate from '../../components/Loading/Loading'
+import ImgMediaCard from "../../components/UserCards/UserCards"
 
 function Students() {
   const { users, loading, getAllUsers } = useUsers();
