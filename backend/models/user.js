@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    username:{
+        username:{
         type:String,
         required:[true,"Username is mandatory"]
     },
@@ -20,6 +20,9 @@ const userSchema = new Schema({
         type: String,
         enum: ['user', 'admin'], // only two roles
         default: 'user'
+    },
+    profileUrl:{
+        type:String,
     },
     department:{
         default: "General",

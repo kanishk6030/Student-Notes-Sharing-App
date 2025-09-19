@@ -11,6 +11,9 @@ const noteSchema = new Schema({
         type:String,
         required:true,
     },
+    coverUrl:{
+        type:String,
+    },
     description:{
         type:String,
     },
