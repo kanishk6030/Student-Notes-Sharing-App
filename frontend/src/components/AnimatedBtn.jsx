@@ -12,9 +12,9 @@ function AnimatedBtn({
       className="!mt-5"
     >
       <Link to={to}>
-        <button className="group !px-6 !py-3 border-b-2 border-[#4d4b4b] !text-black rounded-lg hover:bg-[#4d4b4b] hover:!text-white transition duration-300 w-80 font-light text-2xl shadow-md shadow-[#4d4b4b] outline-none backdrop-blur-md">
+        <button className="group !px-6 !py-3 border-b-2 bg-[#f098fa] border-[#f098fa]  rounded-lg hover:bg-[#f098fa] hover:!text-white transition duration-300 w-80 font-light text-2xl shadow-[#f098fa] outline-none">
           {btntext}
-          <i className="ri-arrow-right-line !text-black group-hover:!text-white transition duration-300"></i>
+
         </button>
       </Link>
     </div>

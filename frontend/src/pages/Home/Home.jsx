@@ -1,6 +1,10 @@
 
 import Cards from "../../components/Cards/Cards";
 import AnimatedBtn from "../../components/AnimatedBtn";
+import Lottie from "lottie-react";
+import hero from "../../lottie/hero.json";
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 function Home() {
 
@@ -14,14 +18,14 @@ function Home() {
         }}>
           <div className=" w-full">
             {/* Border + Content */}
-            <div className="flex flex-col items-start gap-2 ">
+            <div className="flex flex-col items-start gap-2 text-white">
               <h1 className="text-7xl md:text-8xl font-bold">Connect.</h1>
               <h1 className="text-7xl md:text-8xl font-bold">Share.</h1>
               <h1 className="text-7xl md:text-8xl font-bold">Learn.</h1>
 
               {/* Paragraph inside border */}
               <p className="!mt-6 !ml-1 max-w-xl text-left">
-                ZapNotes is a fast and easy note-sharing platform where students
+                NestNotes is a fast and easy note-sharing platform where students
                 can access, share, and learn from class notes instantly. A
                 smarter way to collaborate and study together.
               </p>
@@ -35,8 +39,8 @@ function Home() {
           </div>
         </div>
         <div className="wrapper-2 w-1/2 h-screen flex justify-center items-center">
-          <div className="backdrop-blur-md rounded-lg shadow-lg shadow-gray-400 bg-white/30">
-          <img className="h-100" src="../hero.png" alt="hero" />
+          <div className="h-[80%] w-[80%] mt-[100px]">
+            <Lottie animationData={hero} loop={true} />
           </div>
         </div>
       </div>

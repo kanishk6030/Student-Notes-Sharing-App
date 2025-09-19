@@ -40,7 +40,7 @@ function Header() {
   }
 
   return (
-    <header className="fixed top-0 left-0 w-full h-14 backdrop-blur-md z-50 shadow-md">
+    <header className="fixed top-0 left-0 w-full h-14 backdrop-blur-md z-50 shadow-md text-white">
 
       <nav className="stroke w-full h-full flex justify-around items-center" 
       style={{padding:"4px 50px"}}
@@ -58,13 +58,13 @@ function Header() {
             </Link>
             </li>
             <li>
-          <a href="#about" className="hover:text-gray-200 nav-link">
-            About
-          </a>
+          <Link to="/explore" className="hover:text-gray-200 nav-link">
+            Explore
+          </Link>
             </li>
             <li>
-          <Link to="/students" className="hover:text-gray-200 nav-link">
-            Students
+          <Link to="/pyqs" className="hover:text-gray-200 nav-link">
+            PYQS
           </Link>
             </li>
           </ul>

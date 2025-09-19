@@ -6,6 +6,8 @@ import Home from "./pages/Home/Home";
 import Explore from "./pages/Explore/Explore";
 import Students from "./pages/Students/Students";
 import Profile from "./pages/Profile/Profile";
+import Pyqs from "./pages/Pyqs/Pyqs";
+import PyqsResults from "./pages/Pyqs/PyqsResults";
 
 
 function App() {
@@ -17,8 +19,9 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Register />} />
         <Route path="explore" element={<Explore />} />
-        <Route path="students" element={<Students />} />
+        <Route path="pyqs" element={<Pyqs />} />
         <Route path="profile" element={<Profile />} />
+        <Route path="/pyqs/:branch/:year" element={<PyqsResults />} />
         {/* Add more protected/nested routes here */}
       </Route>
     </Routes>
