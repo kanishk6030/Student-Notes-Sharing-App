@@ -36,7 +36,7 @@ app.use(express.json({limit: "20mb"}));
 app.use(express.urlencoded({limit: "20mb",extended:true}))
 
 // LOGIN & SIGNUP ROUTES
-app.use("/api/auth",authRoutes);
+app.use("/api",authRoutes);
 // User Profile and all
 app.use("/api",userRoute);
 
