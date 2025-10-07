@@ -96,7 +96,7 @@ function ExploreWithFilters() {
 
       {/* Notes list */}
       <div className="mt-12 w-full max-w-6xl">
-        {loading || isSearching ? (
+        {CircularIndeterminate || isSearching ? (
           <p className="flex justify-center items-center h-[50vh]">
             <CircularIndeterminate />
           </p>
