@@ -6,7 +6,7 @@ import NotesCard from "../../components/NotesCard/NotesCard";
 
 // Dummy data for dropdowns. You should replace this with data from your backend.
 const departments = ["Computer Science", "Electrical Engineering", "Mechanical Engineering", "Civil Engineering"];
-const semesters = ["1st Semester", "2nd Semester", "3rd Semester", "4th Semester", "5th Semester", "6th Semester", "7th Semester", "8th Semester"];
+const semesters = ["1", "2", "3", "4", "5", "6", "7", "8"];
 // const subjects = ["Data Structures", "Algorithms", "Operating Systems", "Computer Networks", "Database Management Systems", "Artificial Intelligence"];
 
 function ExploreWithFilters() {
@@ -96,7 +96,7 @@ function ExploreWithFilters() {
 
       {/* Notes list */}
       <div className="mt-12 w-full max-w-6xl">
-        {CircularIndeterminate || isSearching ? (
+        {isSearching ? (
           <p className="flex justify-center items-center h-[50vh]">
             <CircularIndeterminate />
           </p>

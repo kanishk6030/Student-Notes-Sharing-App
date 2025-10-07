@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useNotes } from '../../contexts/useNotes';
 import { useAuth } from '../../contexts/useAuth';
 import CircularProgress from '@mui/material/CircularProgress';
-import NotesCard from '../../components/NotesCard/NotesCard';
 import { Link } from 'react-router-dom';
 
 function Profile() {
@@ -58,7 +57,7 @@ function Profile() {
             <span className="text-right">{user.university}</span>
           </p>
         </div>
-        <Link to="/upload" className="mt-8 w-full">
+        <Link to="/notes/upload" className="mt-8 w-full">
           <button
             className="w-full bg-purple-600 text-white py-3 px-6 rounded-xl font-bold text-lg shadow-lg hover:bg-purple-700 transition-colors duration-300 ease-in-out transform hover:scale-105"
           >
