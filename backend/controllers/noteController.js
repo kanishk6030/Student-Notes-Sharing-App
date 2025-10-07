@@ -47,3 +47,36 @@ module.exports.getNotesByUser = async(req,res)=>{
     res.status(500).json({ success: false, message: err.message });
   }
 }
+
+module.exports.getNoteBySemsterAndSubject = async(req,res) =>{
+  try{
+    const { semester , department } = req.params;
+
+    if(!semester && !department) {
+      return res.status(400).json({
+      success:false,
+      message: "Please provide proper Semester and Department"
+    })
+    }
+
+    const notes = await Note.find({
+      semester:semester,
+      department:department,
+    })
+
+    if(!notes) {
+      return res.status(400).json({
+      success:false,
+      message: `No Notes for this ${semester} and ${department}`
+    })
+    }
+
+    return res.status(200).json({ success: true, notes });
+  }
+  catch(error){
+    res.status(400).json({
+      success:false,
+      message: err.message
+    })
+  }
+}
