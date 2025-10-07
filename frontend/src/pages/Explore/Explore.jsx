@@ -7,37 +7,44 @@ import NotesCard from "../../components/NotesCard/NotesCard";
 // Dummy data for dropdowns. You should replace this with data from your backend.
 const departments = ["Computer Science", "Electrical Engineering", "Mechanical Engineering", "Civil Engineering"];
 const semesters = ["1st Semester", "2nd Semester", "3rd Semester", "4th Semester", "5th Semester", "6th Semester", "7th Semester", "8th Semester"];
-const subjects = ["Data Structures", "Algorithms", "Operating Systems", "Computer Networks", "Database Management Systems", "Artificial Intelligence"];
+// const subjects = ["Data Structures", "Algorithms", "Operating Systems", "Computer Networks", "Database Management Systems", "Artificial Intelligence"];
 
 function ExploreWithFilters() {
-  const { notes, loading, getAllNotes } = useNotes();
   const [selectedDepartment, setSelectedDepartment] = useState("");
   const [selectedSemester, setSelectedSemester] = useState("");
-  const [selectedSubject, setSelectedSubject] = useState("");
   const [filteredNotes, setFilteredNotes] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
 
-  useEffect(() => {
-    // This is a placeholder. You'll likely want to call a specific API endpoint
-    // to fetch notes based on the filters. For now, we'll get all notes.
-    getAllNotes();
-  }, [getAllNotes]);
+  //   // This is a placeholder. You'll likely want to call a specific API endpoint
+  //   // to fetch notes based on the filters. For now, we'll get all notes.
+  //   getAllNotes();
+  // }, [getAllNotes]);
 
-  const handleSearch = () => {
-    setIsSearching(true);
-    // This is a client-side filtering example. For a large dataset,
-    // you should send these filters to your backend to get a smaller,
-    // more relevant list of notes.
-    const results = notes.filter((note) => {
-      return (
-        (!selectedDepartment || note.department === selectedDepartment) &&
-        (!selectedSemester || note.semester === selectedSemester) &&
-        (!selectedSubject || note.subject === selectedSubject)
-      );
-    });
-    setFilteredNotes(results);
+  const handleSearch = async () => {
+  if (!selectedSemester || !selectedDepartment) {
+    alert("Please select both Semester and Department");
+    return;
+  }
+
+  setIsSearching(true);
+  try {
+    const res = await api.get(
+      `/notes/${encodeURIComponent(selectedSemester)}/${encodeURIComponent(selectedDepartment)}`
+    );
+
+    if (res.data.success) {
+      setFilteredNotes(res.data.notes);
+    } else {
+      setFilteredNotes([]);
+      console.warn(res.data.message);
+    }
+  } catch (error) {
+    console.error("Error fetching notes:", error.response?.data || error.message);
+    setFilteredNotes([]);
+  } finally {
     setIsSearching(false);
   };
+ };
 
   return (
     <div className="min-h-screen bg-gray-950 text-gray-200 p-6 sm:p-10 lg:p-14 pt-20 flex flex-col items-center">
@@ -74,19 +81,6 @@ function ExploreWithFilters() {
             ))}
           </select>
 
-          {/* Subject Dropdown */}
-          <select
-            value={selectedSubject}
-            onChange={(e) => setSelectedSubject(e.target.value)}
-            className="w-full p-3 rounded-xl bg-gray-800 text-gray-300 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-colors duration-300"
-          >
-            <option value="">Select Subject</option>
-            {subjects.map((sub) => (
-              <option key={sub} value={sub}>
-                {sub}
-              </option>
-            ))}
-          </select>
         </div>
 
         {/* Search Button */}
@@ -95,7 +89,7 @@ function ExploreWithFilters() {
             onClick={handleSearch}
             className="w-full md:w-auto bg-purple-600 text-white py-3 px-10 rounded-xl font-bold text-lg shadow-lg hover:bg-purple-700 transition-colors duration-300 ease-in-out transform hover:scale-105"
           >
-            Search Notes 🔎
+            Search Notes
           </button>
         </div>
       </div>
