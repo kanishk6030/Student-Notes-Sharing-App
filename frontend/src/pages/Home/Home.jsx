@@ -3,8 +3,6 @@ import Cards from "../../components/Cards/Cards";
 import AnimatedBtn from "../../components/AnimatedBtn";
 import Lottie from "lottie-react";
 import hero from "../../lottie/hero.json";
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
 
 function Home() {
 
@@ -18,7 +16,7 @@ function Home() {
         }}>
           <div className=" w-full">
             {/* Border + Content */}
-            <div className="flex flex-col items-start gap-2 text-white">
+            <div className="flex flex-col items-start gap-2">
               <h1 className="text-7xl md:text-8xl font-bold">Connect.</h1>
               <h1 className="text-7xl md:text-8xl font-bold">Share.</h1>
               <h1 className="text-7xl md:text-8xl font-bold">Learn.</h1>
@@ -46,7 +44,7 @@ function Home() {
       </div>
 
       {/* Page 2 */}
-      <div className="relative z-20 flex w-[90%] text-center rounded-2xl !mb-20 gap-10 !mt-20 flex-wrap flex-row justify-around items-center" id="about">
+      {/* <div className="relative z-20 flex w-[90%] text-center rounded-2xl !mb-20 gap-10 !mt-20 flex-wrap flex-row justify-around items-center" id="about">
         <Cards
           src="../../../public/easy.png"
           title="Easy Access to Notes"
@@ -67,7 +65,7 @@ function Home() {
           title="Easy Access to Notes"
           desc="Students can quickly find and access semester-wise notes in one place without wasting time searching across different sources."
         />
-      </div>
+      </div> */}
 
       {/* Page 3 */}
       {/* <div className="relative z-10 flex flex-col items-center justify-center w-full h-screen text-center">

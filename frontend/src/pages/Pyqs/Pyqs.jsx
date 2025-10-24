@@ -18,7 +18,7 @@ const Pyqs = () => {
         setIsLoading(true);
         // Replace this with your actual API call
         const fetchedData = {
-            branches: ['Computer Science', 'Electrical', 'Mechanical', 'Civil'],
+            branches: ['Computer Science', 'Electrical', 'Mechanical', 'Civil','Information Technology'],
             years: ['2023', '2022', '2021', '2020']
         };
         setBranches(fetchedData.branches);

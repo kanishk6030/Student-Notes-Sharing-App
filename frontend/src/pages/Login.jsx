@@ -19,7 +19,9 @@ function Login() {
     e.preventDefault();
     setError("");
     try {
-      await login(form.email, form.password);
+      if (await login(form.email, form.password)){
+        console.log("Receive the request of the login")
+      };
       navigate("/")
     } catch (error) {
         console.log(error)

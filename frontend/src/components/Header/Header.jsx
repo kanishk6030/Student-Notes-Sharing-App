@@ -40,14 +40,14 @@ function Header() {
   }
 
   return (
-    <header className="fixed top-0 left-0 w-full h-14 backdrop-blur-md z-50 shadow-md text-white">
+    <header className="fixed top-0 left-0 w-full h-14 backdrop-blur-md z-50 shadow-md">
 
       <nav className="stroke w-full h-full flex justify-around items-center" 
       style={{padding:"4px 50px"}}
       >
         <div className="flex items-center">
           <Link to="/" className="uppercase text-xl font-bold flex items-center gap-2">
-          <img src="../logo.png" alt="NoteNest Logo" className="h-6 mr-2" />
+          {/* <img src="../logo.png" alt="NoteNest Logo" className="h-6 mr-2" /> */}
             NoteNest
           </Link>
         </div>
@@ -73,7 +73,7 @@ function Header() {
         <div className="relative" ref={dropdownRef}>
           <button
             onClick={() => setDropdownOpen(!dropdownOpen)}
-            className="text-white text-2xl hover:text-gray-200 focus:outline-none"
+            className=" text-2xl hover:text-gray-200 focus:outline-none"
           >
             <CgProfile />
           </button>

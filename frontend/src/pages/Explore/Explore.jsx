@@ -1,117 +1,98 @@
-// src/pages/ExploreWithFilters.jsx
-import React, { useState, useEffect } from "react";
-import { useNotes } from "../../contexts/useNotes";
-import CircularIndeterminate from "../../components/Loading/Loading";
-import NotesCard from "../../components/NotesCard/NotesCard";
+// Explore.jsx
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FiAlertCircle, FiX } from 'react-icons/fi'; // Import icons
 
-// Dummy data for dropdowns. You should replace this with data from your backend.
-const departments = ["Computer Science", "Electrical Engineering", "Mechanical Engineering", "Civil Engineering"];
-const semesters = ["1", "2", "3", "4", "5", "6", "7", "8"];
-// const subjects = ["Data Structures", "Algorithms", "Operating Systems", "Computer Networks", "Database Management Systems", "Artificial Intelligence"];
+const Explore = () => {
+    const [selectedBranch, setSelectedBranch] = useState('');
+    const [selectedSemester, setSelectedSemester] = useState('');
+    const [branches, setBranches] = useState([]);
+    const [semesters, setSemesters] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [showAlert, setShowAlert] = useState(false);
+    const [alertMessage, setAlertMessage] = useState('');
+    const navigate = useNavigate();
 
-function ExploreWithFilters() {
-  const [selectedDepartment, setSelectedDepartment] = useState("");
-  const [selectedSemester, setSelectedSemester] = useState("");
-  const [filteredNotes, setFilteredNotes] = useState([]);
-  const [isSearching, setIsSearching] = useState(false);
+    // Simulating an API call to get branches and years
+    useEffect(() => {
+        setIsLoading(true);
+        // Replace this with your actual API call
+        const fetchedData = {
+            branches: ['Computer Science', 'Electrical', 'Mechanical', 'Civil', 'Information Technology'],
+            semesters: ['1', '2', '3', '4', '5', '6', '7', '8']
+        };
+        setBranches(fetchedData.branches);
+        setSemesters(fetchedData.semesters);
+        setIsLoading(false);
+    }, []);
 
-  //   // This is a placeholder. You'll likely want to call a specific API endpoint
-  //   // to fetch notes based on the filters. For now, we'll get all notes.
-  //   getAllNotes();
-  // }, [getAllNotes]);
+    const handleSearch = () => {
+        if (selectedBranch && selectedSemester) {
+            setShowAlert(false); // Hide the alert if all fields are selected
+            const encodedBranch = selectedBranch.replace(/\s+/g, '-').toLowerCase();
+            navigate(`/explore/${encodedBranch}/${selectedSemester}`);
+        } else {
+            // Display a custom alert message
+            setAlertMessage('Please select both a branch and a semester.');
+            setShowAlert(true);
+            // Optionally, hide the alert after a few seconds
+            setTimeout(() => {
+                setShowAlert(false);
+            }, 5000);
+        }
+    };
 
-  const handleSearch = async () => {
-  if (!selectedSemester || !selectedDepartment) {
-    alert("Please select both Semester and Department");
-    return;
-  }
+    return (
+        <div className='min-h-screen flex items-center justify-center  p-4 relative z-10'>
+            <div className='p-8 bg-white rounded-lg shadow-md w-full max-w-md space-y-6'>
+                <h1 className='text-3xl font-bold text-center text-gray-800'>Find Your Notes</h1>
+                
+                {/* Custom Alert */}
+                {showAlert && (
+                    <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative flex items-center justify-between transition-all duration-300 transform scale-100 animate-fade-in-up" role="alert">
+                        <div className="flex items-center">
+                            <FiAlertCircle className="mr-3" />
+                            <span className="block sm:inline">{alertMessage}</span>
+                        </div>
+                        <button onClick={() => setShowAlert(false)} className="text-red-700 hover:text-red-900 ml-4">
+                            <FiX />
+                        </button>
+                    </div>
+                )}
+                
+                <div className='space-y-4'>
+                    <select
+                        value={selectedBranch}
+                        onChange={(e) => setSelectedBranch(e.target.value)}
+                        className='block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300'
+                    >
+                        <option value="">Select Branch</option>
+                        {branches.map(branch => (
+                            <option key={branch} value={branch}>{branch}</option>
+                        ))}
+                    </select>
 
-  setIsSearching(true);
-  try {
-    const res = await api.get(
-      `/notes/${encodeURIComponent(selectedSemester)}/${encodeURIComponent(selectedDepartment)}`
+                    <select
+                        value={selectedSemester}
+                        onChange={(e) => setSelectedSemester(e.target.value)}
+                        className='block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300'
+                    >
+                        <option value="">Select Semester</option>
+                        {semesters.map(semester => (
+                            <option key={semester} value={semester}>{semester}</option>
+                        ))}
+                    </select>
+                </div>
+                
+                <button
+                    onClick={handleSearch}
+                    className='w-full py-3 px-4 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition duration-300'
+                >
+                    Search
+                </button>
+            </div>
+        </div>
     );
+};
 
-    if (res.data.success) {
-      setFilteredNotes(res.data.notes);
-    } else {
-      setFilteredNotes([]);
-      console.warn(res.data.message);
-    }
-  } catch (error) {
-    console.error("Error fetching notes:", error.response?.data || error.message);
-    setFilteredNotes([]);
-  } finally {
-    setIsSearching(false);
-  };
- };
-
-  return (
-    <div className="min-h-screen bg-gray-950 text-gray-200 p-6 sm:p-10 lg:p-14 pt-20 flex flex-col items-center">
-      <div className="bg-gray-900 rounded-3xl shadow-2xl p-8 w-full max-w-4xl backdrop-blur-md bg-opacity-70 border border-gray-700">
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-6 text-center tracking-wide">
-          Find Notes by Filters
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-          {/* Department Dropdown */}
-          <select
-            value={selectedDepartment}
-            onChange={(e) => setSelectedDepartment(e.target.value)}
-            className="w-full p-3 rounded-xl bg-gray-800 text-gray-300 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-colors duration-300"
-          >
-            <option value="">Select Department</option>
-            {departments.map((dept) => (
-              <option key={dept} value={dept}>
-                {dept}
-              </option>
-            ))}
-          </select>
-
-          {/* Semester Dropdown */}
-          <select
-            value={selectedSemester}
-            onChange={(e) => setSelectedSemester(e.target.value)}
-            className="w-full p-3 rounded-xl bg-gray-800 text-gray-300 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-colors duration-300"
-          >
-            <option value="">Select Semester</option>
-            {semesters.map((sem) => (
-              <option key={sem} value={sem}>
-                {sem}
-              </option>
-            ))}
-          </select>
-
-        </div>
-
-        {/* Search Button */}
-        <div className="text-center">
-          <button
-            onClick={handleSearch}
-            className="w-full md:w-auto bg-purple-600 text-white py-3 px-10 rounded-xl font-bold text-lg shadow-lg hover:bg-purple-700 transition-colors duration-300 ease-in-out transform hover:scale-105"
-          >
-            Search Notes
-          </button>
-        </div>
-      </div>
-
-      {/* Notes list */}
-      <div className="mt-12 w-full max-w-6xl">
-        {isSearching ? (
-          <p className="flex justify-center items-center h-[50vh]">
-            <CircularIndeterminate />
-          </p>
-        ) : filteredNotes.length > 0 ? (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {filteredNotes.map((note) => (
-              <NotesCard key={note.id} note={note} />
-            ))}
-          </div>
-        ) : (
-          <p className="text-center text-gray-500 text-xl mt-10">No notes found for the selected filters.</p>
-        )}
-      </div>
-    </div>
-  );
-}
-
-export default ExploreWithFilters;
+export default Explore;
