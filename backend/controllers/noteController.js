@@ -48,20 +48,21 @@ module.exports.getNotesByUser = async(req,res)=>{
   }
 }
 
-module.exports.getNoteBySemsterAndSubject = async(req,res) =>{
+module.exports.getNoteBySemsterSubjectDepartment = async(req,res) =>{
   try{
-    const { semester , department } = req.params;
+    const { semester , department , subject } = req.params;
 
-    if(!semester && !department) {
+    if(!semester && !department && !subject) {
       return res.status(400).json({
       success:false,
-      message: "Please provide proper Semester and Department"
+      message: "Please provide proper Semester and Department or Subject"
     })
     }
 
     const notes = await Note.find({
       semester:semester,
       department:department,
+      subject:subject
     })
 
     if(!notes) {
@@ -80,3 +81,4 @@ module.exports.getNoteBySemsterAndSubject = async(req,res) =>{
     })
   }
 }
+
