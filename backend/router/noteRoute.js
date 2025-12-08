@@ -3,7 +3,7 @@ const jwtAuth = require("../middlewares/jwtMiddleware")
 const {uploadNote,
 getAllNotes,
 getOneNote,
-getNotesByUser} = require("../controllers/noteController")
+getNotesByUser,getNoteBySemsterAndSubject} = require("../controllers/noteController")
 const upload = require("../middlewares/cloudConfig");
 const validate = require("../middlewares/validation");
 const { notesValidation } = require("../middlewares/registerValidation");
