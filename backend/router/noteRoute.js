@@ -21,7 +21,7 @@ router.get("/notes",getAllNotes);
 router.get("/notes/search/note",getOneNote);
 router.get("/notes/search/user",getNotesByUser);
 router.post("/notes/upload",jwtAuth,upload.single("fileUrl"),notesValidation,validate,uploadNote)
-router.get("/notes/:semester/:department", jwtAuth,getNoteBySemsterAndSubject);
+router.get("/notes/:semester/:department/:subject", jwtAuth,getNoteBySemsterSubjectDepartment);
 
 router.post("/notes/:noteId/like", jwtAuth, toggleLike);
 router.get("/notes/:noteId/like-status",getLikeStatus);
