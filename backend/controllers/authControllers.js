@@ -120,12 +120,12 @@ passport.use(
         // 2. If not exists → register
         if (!user) {
           user = await User.create({
-            name: profile.displayName,
+            username: profile.displayName,
             email,
             googleId: profile.id,
             authProvider: "google",
             profileUrl: profile.photos[0].value,
-            role: "student",
+            role: "user",
           });
         }
 
