@@ -1,9 +1,9 @@
 const express = require("express");
-const jwtAuth = require("../middlewares/jwtMiddleware")
+const jwtAuth = require("../middlewares/authMiddleware")
 const {uploadNote,
 getAllNotes,
 getOneNote,
-getNotesByUser} = require("../controllers/noteController")
+getNotesByUser,getNoteBySemsterSubjectDepartment} = require("../controllers/noteController")
 const upload = require("../middlewares/cloudConfig");
 const validate = require("../middlewares/validation");
 const { notesValidation } = require("../middlewares/registerValidation");
@@ -20,7 +20,10 @@ const router = express();
 router.get("/notes",getAllNotes);
 router.get("/notes/search/note",getOneNote);
 router.get("/notes/search/user",getNotesByUser);
-router.post("/notes/upload",jwtAuth,upload.single("fileUrl"),notesValidation,validate,uploadNote)
+router.post("/notes/upload",jwtAuth,upload.single("fileUrl"),
+// notesValidation,
+// validate,
+uploadNote)
 router.get("/notes/:semester/:department/:subject", jwtAuth,getNoteBySemsterSubjectDepartment);
 
 router.post("/notes/:noteId/like", jwtAuth, toggleLike);

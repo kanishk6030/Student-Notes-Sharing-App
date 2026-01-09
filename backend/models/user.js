@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-        username:{
+    username:{
         type:String,
         required:[true,"Username is mandatory"]
     },
@@ -14,7 +14,17 @@ const userSchema = new Schema({
     },
     password:{
         type:String,
-        required:true,
+        required:function () {
+        return this.authProvider === "local";
+    },
+    },
+    googleId: {
+        type: String,
+    },
+    authProvider: {
+        type: String,
+        enum: ["local", "google"],
+        default: "local",
     },
     role: {
         type: String,

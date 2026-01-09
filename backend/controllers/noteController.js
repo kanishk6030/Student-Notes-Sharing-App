@@ -4,14 +4,23 @@ const Note = require("../models/notes");
 
 
 module.exports.uploadNote = async(req, res) => {
-try {
+  try {
+    // Check if file was uploaded
+    if (!req.file) {
+      return res.status(400).json({ success: false, message: "No file uploaded" });
+    }
+
+    console.log("Uploaded file:", req.file);
+
     const note = await Note.create({ 
-      fileUrl:req.file?.path || req.file?.secure_url,
-      uploadedBy:req.user.userId,
-      ...req.body });
-      console.log(req.file)
-    return res.status(201).json({ success: true, note:note });
+      fileUrl: req.file.secure_url || req.file.path,
+      uploadedBy: req.user.userId,
+      ...req.body 
+    });
+
+    return res.status(201).json({ success: true, note: note });
   } catch (err) {
+    console.error("Upload error:", err);
     res.status(500).json({ success: false, message: err.message });
   }
 };

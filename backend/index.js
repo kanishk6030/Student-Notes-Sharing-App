@@ -2,15 +2,22 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require('cors');
+const passport = require("passport");
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
+require("./controllers/authControllers")
 const authRoutes = require("../backend/router/authRoute")
 const userRoute = require("../backend/router/userRoute")
 const noteRoute = require("../backend/router/noteRoute")
 // MongoDb connection
 const app = express();
 
+// CORS configuration to allow credentials and cookies
 app.use(cors({
-  origin: '*', // or '*' for all origins, but specific is safer
-  credentials: true // only if you use cookies/auth headers
+  origin: ['http://localhost:5173', 'http://localhost:3000'], // Allow frontend origins (without trailing slash)
+  credentials: true, // Allow cookies
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 const localUrl = "mongodb://127.0.0.1:27017/notes-sharing"
@@ -25,18 +32,24 @@ async function main() {
   await mongoose.connect(process.env.ATLAS_URL);
 }
 
-app.get("/",(req,res)=>{
-  res.send("Hello");
-})
+app.use(
+  session({
+    secret: "passport_secret",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+app.use(cookieParser());
+app.use(express.json({limit: "20mb"}));
+app.use(express.urlencoded({limit: "20mb",extended:true}))
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Notes sharing uploading & destroying
 app.use("/api",noteRoute);
 
-app.use(express.json({limit: "20mb"}));
-app.use(express.urlencoded({limit: "20mb",extended:true}))
-
-// LOGIN & SIGNUP ROUTES
-app.use("/api",authRoutes);
+// Google Routes
+app.use("/auth",authRoutes);
 // User Profile and all
 app.use("/api",userRoute);
 

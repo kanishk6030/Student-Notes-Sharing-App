@@ -1,5 +1,5 @@
 const express = require("express");
-const jwtAuth = require("../middlewares/jwtMiddleware")
+const jwtAuth = require("../middlewares/authMiddleware")
 const {viewOwnProfile,showUserProfile,allUsers,updateUser,getUser} = require("../controllers/userController")
 
 const router = express();
